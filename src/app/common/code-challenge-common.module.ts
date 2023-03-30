@@ -19,13 +19,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { ConfirmDialogService } from './services/confirm-dialog.service';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [ WhiteSpaceTrimPipe, SpinnerComponent,
      FormatTimePipe, SubSpinnerComponent, AddressTitleCasePipe,
      FormatPhoneDirective,DigitOnlyDirective,
      ConfirmDialogComponent,
-     AlertComponent],
+     AlertComponent, FooterComponent, HeaderComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -36,7 +38,7 @@ import { ConfirmDialogService } from './services/confirm-dialog.service';
     MatDialogModule 
   ],
   exports: [
-    CommonModule,    
+    CommonModule,
     MatDialogModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -46,8 +48,8 @@ import { ConfirmDialogService } from './services/confirm-dialog.service';
     FormatPhoneDirective,
     DigitOnlyDirective,
     WhiteSpaceTrimPipe, SpinnerComponent,
-     FormatTimePipe, SubSpinnerComponent,
-     AlertComponent
+    FormatTimePipe, SubSpinnerComponent,
+    AlertComponent, FooterComponent, HeaderComponent
   ],
   providers: [SpinnerService, AddressTitleCasePipe,
     CookiesService, LocalStorageService,ConfirmDialogService ]
