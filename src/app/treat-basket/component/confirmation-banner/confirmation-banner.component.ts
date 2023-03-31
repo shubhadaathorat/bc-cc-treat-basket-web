@@ -14,7 +14,7 @@ export class ConfirmationBannerComponent implements OnInit {
 
   basketCount = 0;
   tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/confirmation-banner.png',bannerText:''};
-  pageHeadingText = `Congratulations!!`;
+  pageHeadingText = `Hurray`;
   successText = `Basket containing Tablets, Vitamins, Supplements will be delivered to Child Name 
   living at Child Address on Date & Time`;
  

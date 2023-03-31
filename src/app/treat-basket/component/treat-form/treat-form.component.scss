@@ -5,6 +5,9 @@
 .code-challenge-basket-form {
     overflow-x: hidden;
     padding: 0 1rem;
+    @include respond(phone) {
+        padding: unset;
+    }
     &__container {
         width: 90%;
         margin: 0 auto 2rem 0;

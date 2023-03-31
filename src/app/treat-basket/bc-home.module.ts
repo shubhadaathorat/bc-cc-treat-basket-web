@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { MerchantRoutingModule } from './bc-home-routing.module';
+import { BcHomeRoutingModule } from './bc-home-routing.module';
 import { BcHomeComponent } from './component/bc-home.component';
 import { EnqueryFormComponent } from './component/treat-form/treat-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +21,7 @@ import { CancelBannerComponent } from './component/cancel-banner/cancel-banner.c
   declarations: [BcHomeComponent, EnqueryFormComponent, HomeBannerComponent, BannerDescriptionComponent, ConfirmationComponent, ConfirmationBannerComponent, CancelBannerComponent],
   imports: [
     CommonModule,
-    MerchantRoutingModule,
+    BcHomeRoutingModule,
     MatFormFieldModule,
     MatGridListModule,
     MatButtonModule,

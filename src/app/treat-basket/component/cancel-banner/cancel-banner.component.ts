@@ -12,8 +12,8 @@ export interface Tile {
 })
 export class CancelBannerComponent implements OnInit {
 
-  pageHeadingText = `Failed`;
-  cancelledText = `Treat not added in Basket`;
+  pageHeadingText = `Oops! Something went wrong`;
+  cancelledText = `This treat hasn't been assigned to anyone yet. Please try again later.`;
   basketCount = 100;
   tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/cancel-banner.png'};
   bpObserverSvcSub: Subscription;

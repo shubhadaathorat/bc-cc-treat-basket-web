@@ -8,8 +8,8 @@ import { Component,OnInit } from '@angular/core';
 
 export class BcHomeComponent implements OnInit{
   showConfirmation = false;
-  displayError = false;
-  displayDescription = true;
+  displayError = true;
+  displayDescription = false;
   constructor() {}
 
   ngOnInit(){}

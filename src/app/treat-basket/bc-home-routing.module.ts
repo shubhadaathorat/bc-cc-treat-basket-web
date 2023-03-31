@@ -13,4 +13,4 @@ const merchantRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class MerchantRoutingModule { }
+export class BcHomeRoutingModule { }
