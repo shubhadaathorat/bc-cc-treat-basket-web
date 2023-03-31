@@ -189,3 +189,26 @@
     margin: 0 auto;
    // border: 1px solid red;
  }
+
+ .ml-10{
+    margin-left: 10px;
+ }
+
+ ::ng-deep .mat-step-header .mat-step-icon-selected {
+    background-color: $code-challenge-brand-blue-dark; 
+ }
+
+ mat-form-field {
+    // to change border color
+    ::ng-deep .mat-form-field-outline {
+         color: $code-challenge-brand-blue-dark !important;
+    }
+    // to change label color
+    ::ng-deep .mat-form-field-label {
+         color: $code-challenge-brand-blue-dark !important;
+    }
+}
+
+ .brand-button{
+    background-color: $code-challenge-brand-blue-dark;
+ }

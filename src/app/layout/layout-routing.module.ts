@@ -4,11 +4,7 @@ import { LayoutComponent } from './component/layout.component';
 
 const routes: Routes = [{
   path: '',
-  component: LayoutComponent,
-  children: [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', loadChildren: () => import('../modules/Home/home.module').then(m => m.HomeModule) },
-  ]
+  component: LayoutComponent
 }];
 
 @NgModule({

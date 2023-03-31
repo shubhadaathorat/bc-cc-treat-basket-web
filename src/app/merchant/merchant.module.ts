@@ -5,22 +5,20 @@ import { MerchantComponent } from './component/merchant.component';
 import { EnqueryFormComponent } from './component/enquery-form/enquery-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BusinessBannerComponent } from './component/business-banner/business-banner.component';
-// import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings, RecaptchaFormsModule } from 'ng-recaptcha';
-import { environment } from 'src/environments/environment';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { CodeChallengeCommonModule } from '../common/code-challenge-common.module';
-import { SolutionsBannerComponent } from './component/solutions-banner/solutions-banner.component';
+import { BannerDescriptionComponent } from './component/home-banner-description/banner-description.component';
 import { ConfirmationComponent } from './component/confirmation/confirmation.component';
 import { ConfirmationBannerComponent } from './component/confirmation-banner/confirmation-banner.component';
 import { MaterialModule } from '../material/material.module';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { CancelBannerComponent } from './component/cancel-banner/cancel-banner.component';
 @NgModule({
-  declarations: [MerchantComponent, EnqueryFormComponent, BusinessBannerComponent, SolutionsBannerComponent, ConfirmationComponent, ConfirmationBannerComponent, CancelBannerComponent],
+  declarations: [MerchantComponent, EnqueryFormComponent, BusinessBannerComponent, BannerDescriptionComponent, ConfirmationComponent, ConfirmationBannerComponent, CancelBannerComponent],
   imports: [
     CommonModule,
     MerchantRoutingModule,
@@ -34,17 +32,8 @@ import { CancelBannerComponent } from './component/cancel-banner/cancel-banner.c
     ReactiveFormsModule,
     MaterialModule,
     NgxMaterialTimepickerModule
-    // RecaptchaModule,
-    // RecaptchaFormsModule
   ],
   exports: [],
-  providers: [
-  //   {
-  //   provide: RECAPTCHA_SETTINGS,
-  //   useValue: {
-  //     siteKey: environment.googleReCaptchaSiteID
-  //   } as RecaptchaSettings,
-  // },
-   DatePipe]
+  providers: [DatePipe]
 })
 export class MerchantModule { }
