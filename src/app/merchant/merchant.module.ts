@@ -18,8 +18,9 @@ import { ConfirmationComponent } from './component/confirmation/confirmation.com
 import { ConfirmationBannerComponent } from './component/confirmation-banner/confirmation-banner.component';
 import { MaterialModule } from '../material/material.module';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { CancelBannerComponent } from './component/cancel-banner/cancel-banner.component';
 @NgModule({
-  declarations: [MerchantComponent, EnqueryFormComponent, BusinessBannerComponent, SolutionsBannerComponent, ConfirmationComponent, ConfirmationBannerComponent],
+  declarations: [MerchantComponent, EnqueryFormComponent, BusinessBannerComponent, SolutionsBannerComponent, ConfirmationComponent, ConfirmationBannerComponent, CancelBannerComponent],
   imports: [
     CommonModule,
     MerchantRoutingModule,

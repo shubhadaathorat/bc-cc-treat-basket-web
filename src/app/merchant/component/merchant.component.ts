@@ -7,13 +7,14 @@ import { Component,OnInit } from '@angular/core';
 })
 
 export class MerchantComponent implements OnInit{
-  showConfirmation = false;
+  showConfirmation = true;
+  displayError = true;
   constructor() {}
 
   ngOnInit(){}
   
   isOrderPlaced(event: boolean){   
-    this.showConfirmation = event;
+     this.showConfirmation = event;
   }
 
   addMoreBtnHandler(){
