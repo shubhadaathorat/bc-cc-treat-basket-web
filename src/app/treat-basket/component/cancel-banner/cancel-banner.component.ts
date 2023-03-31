@@ -4,19 +4,18 @@ declare let anime: any;
 export interface Tile {
   urls: string;
   text: string;
-  bannerText:string;
 }
 @Component({
-  selector: 'code-challenge-confirmation-banner',
-  templateUrl: './confirmation-banner.component.html',
-  styleUrls: ['./confirmation-banner.component.scss']
+  selector: 'code-challenge-cancel-banner',
+  templateUrl: './cancel-banner.component.html',
+  styleUrls: ['./cancel-banner.component.scss']
 })
-export class ConfirmationBannerComponent implements OnInit {
-  successText = `Basket containing Tablets, Vitamins, 
-  Supplements will be delivered to Child Name 
-  living at Child Address on Date & Time`;
+export class CancelBannerComponent implements OnInit {
+
+  pageHeadingText = `Oops! Something went wrong`;
+  cancelledText = `This treat hasn't been assigned to anyone yet. Please try again later.`;
   basketCount = 100;
-  tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/confirmation-banner.png',bannerText:''};
+  tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/cancel-banner.png'};
   bpObserverSvcSub: Subscription;
   constructor() {
   }
@@ -39,7 +38,7 @@ export class ConfirmationBannerComponent implements OnInit {
         duration: 950,
         delay: (el, i) => 70 * i
       }).add({
-        targets: '.an-1',
+        targets: '.text-animation',
         opacity: 0,
         duration: 800,
         easing: "easeOutExpo",

@@ -1,7 +1,7 @@
 @import "../../../../styles/sass/abstracts/variables.scss";
 @import "../../../../styles/sass/abstracts/mixins/mediaquerymanager.scss";
 
-.code-challenge-merchant {
+.code-challenge-home {
     display: grid;
     @include respond(phone) {
         display: block;
@@ -40,7 +40,7 @@
         }
     }
     &-layout_40 {
-        margin: -20rem 0 3rem 0;
+        margin: -25rem 0 3rem 0;
         width: 50%;
         float: right;
         @include respond(phone) {
@@ -63,7 +63,6 @@
             color: $color-white;
             font-size: 2rem;
         }
-
         &-cancel_btn{
             width: auto;
             background: $color-red;

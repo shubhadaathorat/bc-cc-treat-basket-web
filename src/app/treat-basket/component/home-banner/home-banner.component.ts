@@ -1,23 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit,Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 declare let anime: any;
 export interface Tile {
   urls: string;
   text: string;
 }
-@Component({
-  selector: 'code-challenge-cancel-banner',
-  templateUrl: './cancel-banner.component.html',
-  styleUrls: ['./cancel-banner.component.scss']
-})
-export class CancelBannerComponent implements OnInit {
 
-  
-  successText = `Basket containing Tablets, Vitamins, 
-  Supplements will be delivered to Child Name 
-  living at Child Address on Date & Time`;
+@Component({
+  selector: 'code-challenge-home-banner',
+  templateUrl: './home-banner.component.html',
+  styleUrls: ['./home-banner.component.scss']
+})
+export class HomeBannerComponent implements OnInit,AfterViewInit {
   basketCount = 100;
-  tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/cancel-banner.png'};
+  tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/count-banner.png'};
   bpObserverSvcSub: Subscription;
   constructor() {
   }
@@ -26,10 +22,8 @@ export class CancelBannerComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // Wrap every letter in a span
     const textWrapper = document.querySelector('.text-animation');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
     anime.timeline({ loop: true })
       .add({
         targets: '.text-animation .letter',
@@ -40,7 +34,7 @@ export class CancelBannerComponent implements OnInit {
         duration: 950,
         delay: (el, i) => 70 * i
       }).add({
-        targets: '.an-1',
+        targets: '.text-animation',
         opacity: 0,
         duration: 800,
         easing: "easeOutExpo",

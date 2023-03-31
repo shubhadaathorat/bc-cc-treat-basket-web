@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MerchantComponent } from './component/merchant.component';
+import { BcHomeComponent } from './component/bc-home.component';
 
 // TODO: child routing using children component.
 const merchantRoutes: Routes = [
-  { path: '', component: MerchantComponent}
+  { path: '', component: BcHomeComponent}
 ];
 
 @NgModule({
@@ -13,4 +13,4 @@ const merchantRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class MerchantRoutingModule { }
+export class BcHomeRoutingModule { }

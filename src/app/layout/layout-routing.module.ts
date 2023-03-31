@@ -6,7 +6,7 @@ const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children:[
-    { path: 'treat-basket', loadChildren: () => import('../merchant/merchant.module').then(m => m.MerchantModule) },
+    { path: 'treat-basket', loadChildren: () => import('../treat-basket/bc-home.module').then(m => m.BcHomeModule) },
     { path:'', redirectTo:'treat-basket', pathMatch:'full'}
   ]
 }];

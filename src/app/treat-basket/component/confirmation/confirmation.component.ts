@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 declare let anime: any;
 export interface Tile {
@@ -14,8 +13,8 @@ export interface Tile {
 })
 export class ConfirmationComponent implements OnInit {
   tiles: Tile[] = [
-    { text: 'confirmation-banner-top', urls: 'assets/merchant/banner/confirmation-banner-right.png',position:'top' },
-    { text: 'confirmation-banner-basket', urls: 'assets/merchant/banner/treat-basket.png' ,position:'bottom'}
+    { text: 'confirmation-banner-top', urls: 'assets/merchant/banner/confirmation-banner-right.png', position: 'top' },
+    { text: 'confirmation-banner-basket', urls: 'assets/merchant/banner/treat-basket.png', position: 'bottom' }
   ];
   bpObserverSvcSub: Subscription;
   constructor() {
@@ -25,7 +24,6 @@ export class ConfirmationComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // Wrap every letter in a span
     const textWrapper = document.querySelector('.text-animation');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
@@ -39,7 +37,7 @@ export class ConfirmationComponent implements OnInit {
         duration: 950,
         delay: (el, i) => 70 * i
       }).add({
-        targets: '.an-1',
+        targets: '.text-animation',
         opacity: 0,
         duration: 800,
         easing: "easeOutExpo",
@@ -47,4 +45,3 @@ export class ConfirmationComponent implements OnInit {
       });
   }
 }
-

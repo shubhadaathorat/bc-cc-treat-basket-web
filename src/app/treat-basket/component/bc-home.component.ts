@@ -1,15 +1,15 @@
 import { Component,OnInit } from '@angular/core';
 
 @Component({
-  selector: 'code-challenge-merchant',
-  templateUrl: './merchant.component.html',
-  styleUrls: ['./merchant.component.scss']
+  selector: 'code-challenge-bc-home',
+  templateUrl: './bc-home.component.html',
+  styleUrls: ['./bc-home.component.scss']
 })
 
-export class MerchantComponent implements OnInit{
+export class BcHomeComponent implements OnInit{
   showConfirmation = false;
-  displayError = false;
-  displayDescription = true;
+  displayError = true;
+  displayDescription = false;
   constructor() {}
 
   ngOnInit(){}
