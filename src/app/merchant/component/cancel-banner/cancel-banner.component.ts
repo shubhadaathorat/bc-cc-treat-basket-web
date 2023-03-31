@@ -12,10 +12,8 @@ export interface Tile {
 })
 export class CancelBannerComponent implements OnInit {
 
-  
-  successText = `Basket containing Tablets, Vitamins, 
-  Supplements will be delivered to Child Name 
-  living at Child Address on Date & Time`;
+  pageHeadingText = `Failed`;
+  cancelledText = `Treat not added in Basket`;
   basketCount = 100;
   tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/cancel-banner.png'};
   bpObserverSvcSub: Subscription;
@@ -40,7 +38,7 @@ export class CancelBannerComponent implements OnInit {
         duration: 950,
         delay: (el, i) => 70 * i
       }).add({
-        targets: '.an-1',
+        targets: '.text-animation',
         opacity: 0,
         duration: 800,
         easing: "easeOutExpo",

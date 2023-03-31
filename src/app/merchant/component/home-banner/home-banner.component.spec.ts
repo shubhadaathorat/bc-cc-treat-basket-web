@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EnqueryFormComponent } from './enquery-form.component';
+import { HomeBannerComponent } from './home-banner.component';
 
-describe('EnqueryFormComponent', () => {
-  let component: EnqueryFormComponent;
-  let fixture: ComponentFixture<EnqueryFormComponent>;
+describe('BusinessBannerComponent', () => {
+  let component: HomeBannerComponent;
+  let fixture: ComponentFixture<HomeBannerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EnqueryFormComponent ]
+      declarations: [ HomeBannerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EnqueryFormComponent);
+    fixture = TestBed.createComponent(HomeBannerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,8 +1,8 @@
-<div class="code-challenge-merchant-form">
+<div class="code-challenge-basket-form">
   <code-challenge-business-banner *ngIf=isPhone></code-challenge-business-banner>
-  <div class="code-challenge-merchant-form__container">
-    <div class="code-challenge-merchant-form-header">
-      <div class="code-challenge-merchant-form-header__title">
+  <div class="code-challenge-basket-form__container">
+    <div class="code-challenge-basket-form-header">
+      <div class="code-challenge-basket-form-header__title">
         Fill in the information
       </div>
     </div>
@@ -170,7 +170,7 @@
                       </mat-chip>
                       <input
                         placeholder="Symptom..."
-                        #fruitInput
+                        #chipInput
                         formControlName="symptoms" 
                         [matAutocomplete]="auto"
                         [matChipInputFor]="symptomschipList"
@@ -224,7 +224,7 @@
                       </mat-chip>
                       <input
                         placeholder="allergy..."
-                        #fruitInput
+                        #chipInput
                         formControlName="allergies" 
                         [matAutocomplete]="auto1"
                         [matChipInputFor]="chipList"
@@ -277,7 +277,7 @@
                       </mat-chip>
                       <input
                         placeholder="Medications..."
-                        #fruitInput
+                        #chipInput
                         formControlName="currentMedication" 
                         [matAutocomplete]="auto2"
                         [matChipInputFor]="MedicationchipList"

@@ -4,17 +4,16 @@ declare let anime: any;
 export interface Tile {
   urls: string;
   text: string;
-  bannerText:string;
 }
 
 @Component({
-  selector: 'code-challenge-business-banner',
-  templateUrl: './business-banner.component.html',
-  styleUrls: ['./business-banner.component.scss']
+  selector: 'code-challenge-home-banner',
+  templateUrl: './home-banner.component.html',
+  styleUrls: ['./home-banner.component.scss']
 })
-export class BusinessBannerComponent implements OnInit,AfterViewInit {
+export class HomeBannerComponent implements OnInit,AfterViewInit {
   basketCount = 100;
-  tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/count-banner.png',bannerText:''};
+  tiles: Tile = { text: 'order count', urls: 'assets/merchant/banner/count-banner.png'};
   bpObserverSvcSub: Subscription;
   constructor() {
   }
@@ -23,10 +22,8 @@ export class BusinessBannerComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // Wrap every letter in a span
     const textWrapper = document.querySelector('.text-animation');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
     anime.timeline({ loop: true })
       .add({
         targets: '.text-animation .letter',
@@ -37,7 +34,7 @@ export class BusinessBannerComponent implements OnInit,AfterViewInit {
         duration: 950,
         delay: (el, i) => 70 * i
       }).add({
-        targets: '.an-1',
+        targets: '.text-animation',
         opacity: 0,
         duration: 800,
         easing: "easeOutExpo",

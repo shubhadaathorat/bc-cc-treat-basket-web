@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { MerchantRoutingModule } from './merchant-routing.module';
-import { MerchantComponent } from './component/merchant.component';
-import { EnqueryFormComponent } from './component/enquery-form/enquery-form.component';
+import { MerchantRoutingModule } from './bc-home-routing.module';
+import { BcHomeComponent } from './component/bc-home.component';
+import { EnqueryFormComponent } from './component/treat-form/treat-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BusinessBannerComponent } from './component/business-banner/business-banner.component';
+import { HomeBannerComponent } from './component/home-banner/home-banner.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +18,7 @@ import { MaterialModule } from '../material/material.module';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { CancelBannerComponent } from './component/cancel-banner/cancel-banner.component';
 @NgModule({
-  declarations: [MerchantComponent, EnqueryFormComponent, BusinessBannerComponent, BannerDescriptionComponent, ConfirmationComponent, ConfirmationBannerComponent, CancelBannerComponent],
+  declarations: [BcHomeComponent, EnqueryFormComponent, HomeBannerComponent, BannerDescriptionComponent, ConfirmationComponent, ConfirmationBannerComponent, CancelBannerComponent],
   imports: [
     CommonModule,
     MerchantRoutingModule,
@@ -36,4 +36,4 @@ import { CancelBannerComponent } from './component/cancel-banner/cancel-banner.c
   exports: [],
   providers: [DatePipe]
 })
-export class MerchantModule { }
+export class BcHomeModule { }

@@ -4,19 +4,20 @@
 .code-challenge-bb-container {
     padding-top: 2rem;
     margin-bottom: 2rem;
-    // margin-left: 7.5%;
 
     @include respond(phone) {
         padding: 0;
         margin-bottom: 3rem;
         margin-left: 0;
     }
+
     &-slick {
         overflow-x: hidden;
         &__img {
             width: 10rem;
         }
     }
+
     .banner-container {
         position: relative;
         text-align: center;
@@ -24,12 +25,13 @@
             position: absolute;
             top: 65%;
             left: 50%;
-            transform: translate(-50%, -50%);    
+            transform: translate(-50%, -50%);
             @include respond(phone) {
                 top: 75%;
             }
         }
-          &__banner-text {
+
+        &__banner-text {
             text-align: center;
             font-size: 4rem;
             line-height: 50px;
@@ -39,8 +41,9 @@
                 font-weight: 600;
                 font-size: 3rem;
             }
-          }
-          &__banner-description {
+        }
+
+        &__banner-description {
             text-align: center;
             font-size: 3rem;
             line-height: 50px;
@@ -49,8 +52,6 @@
                 font-weight: 600;
                 font-size: 3rem;
             }
-          }
-      }
-    
+        }
+    }
 }
-
