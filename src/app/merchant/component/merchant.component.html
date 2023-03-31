@@ -1,5 +1,5 @@
 <code-challenge-header [searchVisible]=false></code-challenge-header>
-<code-challenge-solutions-banner *ngIf="!showConfirmation" class="code-challenge-solution-banner"></code-challenge-solutions-banner>    
+<code-challenge-solutions-banner *ngIf="!showConfirmation && !displayError" class="code-challenge-solution-banner"></code-challenge-solutions-banner>    
 <section class="code-challenge-merchant">
     <div *ngIf="!showConfirmation" >
         <div class="code-challenge-merchant-layout_60">
@@ -21,7 +21,6 @@
         </div>  
     </div>
     <div *ngIf="showConfirmation" class="code-challenge-merchant-layout_btn">
-
         <button *ngIf="!displayError" mat-flat-button class="code-challenge-merchant-layout_btn-active_btn" (click)="addMoreBtnHandler()">Add More</button>
         <button *ngIf="displayError" mat-flat-button class="code-challenge-merchant-layout_btn-cancel_btn" (click)="addMoreBtnHandler()">Go Back</button>
     </div>    
