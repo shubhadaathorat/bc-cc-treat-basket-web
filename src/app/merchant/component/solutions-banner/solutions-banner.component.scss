@@ -9,23 +9,34 @@
     }
 
     &-grid1 {
-        width: 47%;
+        width: 100%;
         display: flex;
         line-height: 3.5rem;
         margin-left: 7.5%;
         padding: 1rem 0;
-        font-size: 1.5rem;
+        p{
+            font-size: 3.5rem;
+        }
+        span{
+            line-height: 2.5rem;
+        }
         color: $color-black;
         @include respond(phone) {
             width: 100%;
             line-height: 2.5rem;
         }
         &__leftSection {
-            width: 50%;
-        }
-
-        &__rightSection {
-            width: 50%;
+            width: 40%;
+            @include respond(phone) {
+                width: 90%;
+                line-height: 2.5rem;
+                p{
+                    font-size: 2.5rem;
+                }
+                span{
+                    line-height: 1.5rem;
+                }
+            }
         }
     }
 }

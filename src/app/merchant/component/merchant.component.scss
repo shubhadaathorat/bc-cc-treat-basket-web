@@ -13,6 +13,23 @@
             display: none;
         }
     }
+    &-layout_success_50 {
+        width: 50%;
+        float: left;      
+        @include respond(phone) {
+            top:10rem;
+            width: 100%;
+            // margin: -2rem 0 3rem 0;
+            float: unset;
+        }
+    }
+    &-layout_success_40 {
+        width: 50%;
+        float: left;      
+        @include respond(phone) {
+            display: none;
+        }
+    }
     &-layout_40 {
         margin: -20rem 0 3rem 0;
         width: 50%;
@@ -28,5 +45,18 @@
     display: block;
     @include respond(phone) {
         display: none;
+    }
+}
+
+.add-more-btn{
+    width: 20%;
+    background: #00557c;
+    color: $color-white;
+    font-size: 2rem;
+    margin: 2rem 0;
+    padding: 0.6rem;
+
+    &:disabled {
+        cursor: not-allowed;
     }
 }
