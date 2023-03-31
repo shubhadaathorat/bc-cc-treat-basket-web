@@ -4,7 +4,11 @@ import { LayoutComponent } from './component/layout.component';
 
 const routes: Routes = [{
   path: '',
-  component: LayoutComponent
+  component: LayoutComponent,
+  children:[
+    { path: 'treat-basket', loadChildren: () => import('../merchant/merchant.module').then(m => m.MerchantModule) },
+    { path:'', redirectTo:'treat-basket', pathMatch:'full'}
+  ]
 }];
 
 @NgModule({
