@@ -2,11 +2,12 @@
 @import "../../../../styles/sass/abstracts/mixins/mediaquerymanager.scss";
 
 .code-challenge-sb-container {
-    background-color: $code-challenge-color-gray-3;
-    
+    background-color: $code-challenge-color-gray-3;    
     @include respond(phone) {
-        border-radius: 0.5rem 0.5rem 0 0;
-        margin-bottom: 1rem;
+        width: 100%;
+        border-radius: 2rem 2rem 0rem 0rem;
+        margin-bottom: 4rem;
+        margin-top: -2rem;
     }
 
     &-grid1 {
@@ -27,7 +28,7 @@
         }
         color: $color-black;
         @include respond(phone) {
-            width: 100%;
+            width: auto;
             line-height: 2.5rem;
         }
         &__leftSection {
