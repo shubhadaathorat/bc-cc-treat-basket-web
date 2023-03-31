@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommonFiltersComponent } from './common-filters.component';
+import { ConfirmationComponent } from './confirmation.component';
 
-describe('CommonFiltersComponent', () => {
-  let component: CommonFiltersComponent;
-  let fixture: ComponentFixture<CommonFiltersComponent>;
+describe('ConfirmationComponent', () => {
+  let component: ConfirmationComponent;
+  let fixture: ComponentFixture<ConfirmationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CommonFiltersComponent ]
+      declarations: [ ConfirmationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommonFiltersComponent);
+    fixture = TestBed.createComponent(ConfirmationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
