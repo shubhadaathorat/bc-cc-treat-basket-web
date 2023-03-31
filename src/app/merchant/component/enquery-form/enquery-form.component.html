@@ -11,7 +11,7 @@
         <mat-step [stepControl]="childDetailsForm">
           <form [formGroup]="childDetailsForm">
             <ng-template matStepLabel>Child Details</ng-template>
-            <mat-grid-list class="" [cols]="isPhone?1:2" rowHeight="10rem">
+            <mat-grid-list class="" [cols]="isPhone?1:2" rowHeight="8.5rem">
 
               <mat-grid-tile>
                 <mat-form-field appearance="outline">
@@ -87,9 +87,9 @@
 
             </mat-grid-list>
             <div class="stepper-submit-button">
-              <button mat-flat-button (click)="resetChildDetails()">Reset</button>
-              <button mat-flat-button color="primary" matStepperNext (click)="submitChildDetails()"
-                [disabled]="!childDetailsForm.valid">Next</button>
+              <button mat-stroked-button (click)="resetChildDetails()">Reset</button>
+              <button mat-flat-button color="primary"   matStepperNext (click)="submitChildDetails()"
+                [disabled]="!childDetailsForm.valid" class="ml-10 brand-button">Next</button>
             </div>
           </form>
         </mat-step>
@@ -131,7 +131,7 @@
             <div class="chip-rows-container">
 
 
-              <mat-grid-list class="" cols="1" rowHeight="8.5rem">
+              <!-- <mat-grid-list class="" cols="1" rowHeight="8.5rem">
                 <mat-grid-tile>
                   <mat-form-field class="symptoms-chip-list" appearance="outline">
                     <mat-label>Symptoms</mat-label>
@@ -142,15 +142,54 @@
                           <mat-icon>cancel</mat-icon>
                         </button>
                       </mat-chip>
-                      <input placeholder="symptom..." formControlName="symptoms" [matChipInputFor]="symptomschipList"
-                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-                        (matChipInputTokenEnd)="addSymptom($event)">
+                      <input placeholder="symptom..." 
+                      formControlName="symptoms" 
+                      [matChipInputFor]="symptomschipList"
+                      
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" 
+                      [matChipInputAddOnBlur]="addOnBlur"
+                      (matChipInputTokenEnd)="addSymptom($event)">
                     </mat-chip-list>
+                    
                   </mat-form-field>
                 </mat-grid-tile>
+              </mat-grid-list> -->
+
+              <mat-grid-list  cols="1" rowHeight="8.5rem">
+                <mat-grid-tile>
+                  <mat-form-field class="symptoms-chip-list" appearance="outline">
+                    <mat-label>Symptoms</mat-label>
+                    <mat-chip-list #symptomschipList >
+                      <mat-chip
+                        *ngFor="let symmptom of symmptoms"
+                        (removed)="removeSymptom(symmptom)">
+                        {{symmptom}}
+                        <button matChipRemove>
+                          <mat-icon>cancel</mat-icon>
+                        </button>
+                      </mat-chip>
+                      <input
+                        placeholder="Symptom..."
+                        #fruitInput
+                        formControlName="symptoms" 
+                        [matAutocomplete]="auto"
+                        [matChipInputFor]="symptomschipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="addSymptom($event)">
+                    </mat-chip-list>
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                      <mat-option *ngFor="let symptom of filteredSymptoms | async" [value]="symptom">
+                        {{symptom}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </mat-grid-tile>
+
               </mat-grid-list>
 
-              <mat-grid-list class="" cols="1" rowHeight="8.5rem">
+
+
+              <!-- <mat-grid-list class="" cols="1" rowHeight="8.5rem">
                 <mat-grid-tile>
                   <mat-form-field class="symptoms-chip-list" appearance="outline">
                     <mat-label>Allergies</mat-label>
@@ -167,10 +206,43 @@
                     </mat-chip-list>
                   </mat-form-field>
                 </mat-grid-tile>
+              </mat-grid-list> -->
+
+
+              <mat-grid-list  cols="1" rowHeight="8.5rem">
+                <mat-grid-tile>
+                  <mat-form-field class="symptoms-chip-list" appearance="outline">
+                    <mat-label>Allergies</mat-label>
+                    <mat-chip-list #chipList >
+                      <mat-chip
+                        *ngFor="let allergy of allergies"
+                        (removed)="removeAllergy(allergy)">
+                        {{allergy}}
+                        <button matChipRemove>
+                          <mat-icon>cancel</mat-icon>
+                        </button>
+                      </mat-chip>
+                      <input
+                        placeholder="allergy..."
+                        #fruitInput
+                        formControlName="allergies" 
+                        [matAutocomplete]="auto1"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="addAllergy($event)">
+                    </mat-chip-list>
+                    <mat-autocomplete #auto1="matAutocomplete" (optionSelected)="selectedAllergy($event)">
+                      <mat-option *ngFor="let allergy of filteredAllergies | async" [value]="allergy">
+                        {{allergy}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </mat-grid-tile>
+
               </mat-grid-list>
 
 
-              <mat-grid-list class="" cols="1" rowHeight="8.5rem">
+              <!-- <mat-grid-list class="" cols="1" rowHeight="8.5rem">
                 <mat-grid-tile>
                   <mat-form-field class="symptoms-chip-list" appearance="outline">
                     <mat-label>Medications</mat-label>
@@ -187,16 +259,49 @@
                     </mat-chip-list>
                   </mat-form-field>
                 </mat-grid-tile>
+              </mat-grid-list> -->
+
+
+              <mat-grid-list  cols="1" rowHeight="8.5rem">
+                <mat-grid-tile>
+                  <mat-form-field class="symptoms-chip-list" appearance="outline">
+                    <mat-label>Medications</mat-label>
+                    <mat-chip-list #MedicationchipList >
+                      <mat-chip
+                        *ngFor="let medication of medications"
+                        (removed)="removeMedication(allergy)">
+                        {{medication}}
+                        <button matChipRemove>
+                          <mat-icon>cancel</mat-icon>
+                        </button>
+                      </mat-chip>
+                      <input
+                        placeholder="Medications..."
+                        #fruitInput
+                        formControlName="currentMedication" 
+                        [matAutocomplete]="auto2"
+                        [matChipInputFor]="MedicationchipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        (matChipInputTokenEnd)="addMedication($event)">
+                    </mat-chip-list>
+                    <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selectedMedication($event)">
+                      <mat-option *ngFor="let medication of filteredMedications | async" [value]="medication">
+                        {{medication}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </mat-grid-tile>
+
               </mat-grid-list>
 
             </div>
 
 
             <div class="stepper-submit-button">
-              <button mat-flat-button (click)="resetHealthDetailsDetails()">Reset</button>
-              <button mat-flat-button matStepperPrevious>Back</button>
+              <button mat-stroked-button (click)="resetHealthDetailsDetails()">Reset</button>
+              <button mat-stroked-button matStepperPrevious class="ml-10">Back</button>
               <button mat-flat-button color="primary" matStepperNext (click)="healthConditionSubmit()"
-                [disabled]="!healthConditionForm.valid">Next</button>
+                [disabled]="!healthConditionForm.valid" class="ml-10 brand-button">Next</button>
             </div>
           </form>
         </mat-step>
@@ -248,7 +353,7 @@
                   <mat-label>Preferred Delivery Time</mat-label>
                   <input matInput placeholder="Enter allergies" formControlName="DeliveryTime" required
                     [ngxTimepicker]="picker4">
-                  <ngx-material-timepicker #picker4></ngx-material-timepicker>
+                  <ngx-material-timepicker #picker4 class=""></ngx-material-timepicker>
                   <mat-error *ngIf="hasError(ContactDeliveryForm, 'DeliveryTime', 'required')">
                     Delivery time is required
                   </mat-error>
@@ -296,9 +401,9 @@
 
             </mat-grid-list>
             <div class="last-stepper-content-container">
-              <button mat-flat-button (click)="stepper.reset()">Reset</button>
-              <button mat-flat-button matStepperPrevious>Back</button>
-              <button mat-flat-button color="primary" matStepperNext (click)="submitInformation()"
+              <button mat-stroked-button (click)="stepper.reset()">Reset</button>
+              <button mat-stroked-button matStepperPrevious class="ml-10">Back</button>
+              <button mat-flat-button color="primary" class="ml-10 brand-button" matStepperNext (click)="submitInformation()"
                 [disabled]="!ContactDeliveryForm.valid">Submit Information</button>
             </div>
           </form>

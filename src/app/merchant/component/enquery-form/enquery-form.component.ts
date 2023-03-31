@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,Output, OnDestroy,ViewChild,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input,Output, OnDestroy,ViewChild,EventEmitter,ElementRef } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations';
 import { FormControl, FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
@@ -15,7 +15,16 @@ import * as moment from 'moment'
 import { MatStepper } from '@angular/material/stepper';
 import { ManageInfoService } from '../../services/modules/manage-info/manage-info.service';
 
+////json constants
+import {relationWithChildData} from '../../../common/constants/jsonrelationWithChildData'
+import {currentMedications} from '../../../common/constants/jsonCurrentMedications'
+import { allSymptoms} from '../../../common/constants/jsonAllSymptoms'
+import {allAllergies} from '../../../common/constants/jsonAllAllergies'
+import {allMedications} from '../../../common/constants/jsonAllMedications'
 
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 export interface Fruit {
   name: string;
@@ -35,38 +44,30 @@ export class EnqueryFormComponent implements OnInit, OnDestroy {
   ContactDeliveryForm: FormGroup;
   illnessSelected: any;
   @Output() isFormSubmit = new EventEmitter<boolean>();
-  relationWithChildData=[
-    {
-    relationName:'Father'
-  },
-  {
-    relationName:'Mother',
-  },
-  {
-    relationName:'Brother'
-  }
-  
-  ]
 
-  currentMedications = [
-    {
-    medication:'Dengue'
-  },
-  {
-    medication:'Cold',
-  },
-  {
-    medication:'other'
-  }
-  
-  ]
+ /////
+  relationWithChildData = relationWithChildData
+
+  currentMedications = currentMedications
+  //////////////////////////////////////////
+
+  fruitCtrl = new FormControl();
+  filteredSymptoms: Observable<string[]>;
+  filteredAllergies: Observable<string[]>;
+  filteredMedications: Observable<string[]>;
+ 
+  allSymptoms = allSymptoms;
+  allAllergies =allAllergies;
+  allMedications=allMedications
+
+  @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
 
   ////symptoms chips
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  symmptoms = ['cough', 'fever'];
-  allergies = ['peanut', 'gluten'];
-  medications= ['data', 'data2'];
+  symmptoms = [];
+  allergies = [];
+  medications= [];
   genders =['Female','Male','Other']
   @ViewChild ('stepper') stepper: MatStepper;
   today = new Date(); 
@@ -80,14 +81,11 @@ export class EnqueryFormComponent implements OnInit, OnDestroy {
   typesOfIllnessList=[];
   selectedGender: any;
 
-  // recaptchaReactive: FormControl;
-  // businessAddress: FormControl;
-  // businessUrl: FormControl;
+  
 
   constructor(private fb: FormBuilder,
               private bpObserverSvc: BreakpointObserver,
-              // private salonSvc: SalonService,
-              // private amplitudeSvc: AnalyticsService
+              
               private manageInfoService: ManageInfoService
               ) {
     this.bpObserverSvcSub = bpObserverSvc
@@ -101,6 +99,22 @@ export class EnqueryFormComponent implements OnInit, OnDestroy {
           this.cols=2
         }
       });
+
+      ////////////////////////////
+      this.filteredSymptoms = this.fruitCtrl.valueChanges.pipe(
+        startWith(null),
+        map((item: string | null) => (item ? this._filter(item) : this.allSymptoms.slice())),
+      );
+
+      this.filteredAllergies = this.fruitCtrl.valueChanges.pipe(
+        startWith(null),
+        map((item: string | null) => (item ? this._filterAllergies(item) : this.allAllergies.slice())),
+      );
+
+      this.filteredMedications = this.fruitCtrl.valueChanges.pipe(
+        startWith(null),
+        map((item: string | null) => (item ? this._filterMedications(item) : this.allMedications.slice())),
+      );
   }
 
   ngOnInit(): void {
@@ -307,7 +321,47 @@ removeMedication(medication): void {
     this.medications.splice(index, 1);
   }
 }
+/////////////////////////
 
+
+selected(event: MatAutocompleteSelectedEvent): void {
+  this.symmptoms.push(event.option.viewValue);
+  this.fruitInput.nativeElement.value = '';
+  this.fruitCtrl.setValue(null);
+}
+
+private _filter(value: string): string[] {
+  const filterValue = value.toLowerCase();
+
+  return this.allSymptoms.filter(item => item.toLowerCase().includes(filterValue));
+}
+
+selectedAllergy(event: MatAutocompleteSelectedEvent): void {
+  this.allergies.push(event.option.viewValue);
+  this.fruitInput.nativeElement.value = '';
+  this.fruitCtrl.setValue(null);
+}
+
+private _filterAllergies(value: string): string[] {
+  const filterValue = value.toLowerCase();
+
+  return this.allAllergies.filter(item => item.toLowerCase().includes(filterValue));
+}
+
+selectedMedication(event: MatAutocompleteSelectedEvent): void {
+  this.medications.push(event.option.viewValue);
+  this.fruitInput.nativeElement.value = '';
+  this.fruitCtrl.setValue(null);
+}
+
+private _filterMedications(value: string): string[] {
+  const filterValue = value.toLowerCase();
+
+  return this.allMedications.filter(fruit => fruit.toLowerCase().includes(filterValue));
+}
+
+
+////////////////////
   ngOnDestroy() {
     if (this.getTypesOfIllnessSubscription) {
       this.getTypesOfIllnessSubscription.unsubscribe();
