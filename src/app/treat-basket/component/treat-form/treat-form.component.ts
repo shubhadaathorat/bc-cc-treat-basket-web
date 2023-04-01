@@ -74,6 +74,7 @@ export class EnqueryFormComponent implements OnInit, OnDestroy {
   getTypesOfIllnessSubscription: Subscription;
   typesOfIllnessList = [];
   selectedGender: any;
+  emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]{2,4}$/;
   constructor(private fb: FormBuilder,
     private bpObserverSvc: BreakpointObserver,
     private manageInfoService: ManageInfoService
@@ -125,7 +126,7 @@ export class EnqueryFormComponent implements OnInit, OnDestroy {
     });
     this.ContactDeliveryForm = this.fb.group({
       phoneNumber: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required,Validators.pattern(this.emailPattern)]],
       deliveryAddress: ['', Validators.required],
       deliveryDate: ['', Validators.required],
       DeliveryTime: ['', Validators.required],

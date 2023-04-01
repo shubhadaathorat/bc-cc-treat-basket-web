@@ -50,7 +50,7 @@
               <mat-grid-tile>
                 <mat-form-field appearance="outline">
                   <mat-label>Parent/Guardian Name </mat-label>
-                  <input matInput placeholder="Enter Weight" formControlName="parentName" required>
+                  <input matInput placeholder="Parent/Guardian Name" formControlName="parentName" required>
                   <mat-error *ngIf="hasError(childDetailsForm, 'parentName', 'required')">
                     Parent/Guardian Name is required
                   </mat-error>
@@ -333,6 +333,9 @@
                   <input matInput placeholder="Email" formControlName="email" required>
                   <mat-error *ngIf="hasError(ContactDeliveryForm, 'email', 'required')">
                     Email is required
+                  </mat-error>
+                  <mat-error *ngIf="hasError(ContactDeliveryForm, 'email', 'pattern')">
+                    Enter valid email
                   </mat-error>
                 </mat-form-field>
               </mat-grid-tile>

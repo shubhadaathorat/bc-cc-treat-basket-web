@@ -13,7 +13,7 @@ export class ManageInfoService {
   constructor(private api: ApiService) { }
 
   getTypeOfIllness() {
-    this.url = urls.getTypeOfIllness();
+    this.url = urls.typeOfIllness();
     return this.api.get(this.url.endPoint);
   }
 
@@ -26,5 +26,4 @@ export class ManageInfoService {
     this.url = urls.order();
     return this.api.post(this.url.endPoint,orderRequest);
   }
-
 }
