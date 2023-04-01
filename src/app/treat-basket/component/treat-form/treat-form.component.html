@@ -50,6 +50,20 @@
                 </mat-form-field>
               </mat-grid-tile>
 
+
+              <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="gender" panelClass="" (selectionChange)="onGenderChange($event)">
+                    <mat-option [value]="gender" *ngFor="let gender of genders">{{gender}}</mat-option>
+
+                  </mat-select>
+                  <mat-error *ngIf="hasError(childDetailsForm, 'gender', 'required')">
+                    Gender is required
+                  </mat-error>
+                </mat-form-field>
+              </mat-grid-tile>
+
               <mat-grid-tile>
                 <mat-form-field appearance="outline">
                   <mat-label>Parent/Guardian Name </mat-label>
@@ -75,18 +89,7 @@
                 </mat-form-field>
               </mat-grid-tile>
 
-              <mat-grid-tile>
-                <mat-form-field appearance="outline">
-                  <mat-label>Gender</mat-label>
-                  <mat-select formControlName="gender" panelClass="" (selectionChange)="onGenderChange($event)">
-                    <mat-option [value]="gender" *ngFor="let gender of genders">{{gender}}</mat-option>
-
-                  </mat-select>
-                  <mat-error *ngIf="hasError(childDetailsForm, 'gender', 'required')">
-                    Gender is required
-                  </mat-error>
-                </mat-form-field>
-              </mat-grid-tile>
+            <!-- gender -->
 
             </mat-grid-list>
             <div class="stepper-submit-button">
