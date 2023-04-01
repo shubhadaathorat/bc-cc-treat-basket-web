@@ -3,7 +3,7 @@
   <div class="code-challenge-basket-form__container">
     <div class="code-challenge-basket-form-header">
       <div class="code-challenge-basket-form-header__title">
-        Fill in the information
+        Fill in your information to receive a get well basket
       </div>
     </div>
     <div>
@@ -106,7 +106,7 @@
                   <mat-label>Type of illness</mat-label>
                   <mat-select formControlName="typeOfIllness" panelClass=""
                     (selectionChange)="onTypeOfIllnessChange($event)">
-                    <mat-option [value]="ilness.id"
+                    <mat-option [value]="ilness.illness_name"
                       *ngFor="let ilness of typesOfIllnessList">{{ilness.illness_name}}</mat-option>
 
                   </mat-select>
@@ -352,7 +352,7 @@
                 <mat-form-field appearance="outline">
                   <mat-label>Preferred Delivery Time</mat-label>
                   <input matInput placeholder="Enter allergies" formControlName="DeliveryTime" required
-                    [ngxTimepicker]="picker4">
+                    [ngxTimepicker]="picker4" [format]="24">
                   <ngx-material-timepicker #picker4 class=""></ngx-material-timepicker>
                   <mat-error *ngIf="hasError(ContactDeliveryForm, 'DeliveryTime', 'required')">
                     Delivery time is required
